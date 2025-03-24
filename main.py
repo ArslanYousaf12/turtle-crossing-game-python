@@ -20,4 +20,16 @@ while game_is_on:
     screen.update()
     car_manager.create_car()
     car_manager.move()
+    
+    #Detect collisions with car
+    for car in car_manager.all_cars:
+        print(car.heading())
+        print(myTurtle.distance(car))     
+        if car.distance(myTurtle) < 20:
+            game_is_on = False
+    
+    # Detect Collision with the uper wall
+    if myTurtle.ycor() > 300:
+        myTurtle.goto(0, -280)
+        car_manager.level_up()
    

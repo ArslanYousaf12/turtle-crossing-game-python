@@ -10,13 +10,20 @@ class CarManager:
        
         
         self.all_cars = []
+        self.car_speed = STARTING_MOVE_DISTANCE
+        
         
         
     
     def move(self):
         for car in self.all_cars:
             car.setheading(180)
-            car.forward(STARTING_MOVE_DISTANCE)
+            car.forward(self.car_speed)
+    def level_up(self):
+        self.car_speed += MOVE_INCREMENT
+        
+       
+        
     
     def create_car(self):
         random_channce = random.randint(1, 6)
