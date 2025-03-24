@@ -9,7 +9,7 @@ screen.setup(width=600, height=600)
 screen.tracer(0)
 car_manager = CarManager()
 myTurtle = Player()
-
+score = Scoreboard()
 screen.listen()
 
 screen.onkey(myTurtle.move, "Up")
@@ -27,9 +27,16 @@ while game_is_on:
         print(myTurtle.distance(car))     
         if car.distance(myTurtle) < 20:
             game_is_on = False
+            score.game_over()
     
     # Detect Collision with the uper wall
     if myTurtle.ycor() > 300:
         myTurtle.goto(0, -280)
         car_manager.level_up()
+        score.update_score()
+        
+        
+        
+
+screen.exitonclick()
    
